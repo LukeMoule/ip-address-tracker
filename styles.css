@@ -48,7 +48,7 @@ h1{
     height: 60px;
 }
 
-.input-field{
+#input-field{
     outline: none;
     padding: 0 0 0 1rem;
     font-family: inherit;
@@ -60,11 +60,11 @@ h1{
     border-radius: 15px 0 0 15px;
 }
 
-.input-field::placeholder{
+#input-field::placeholder{
     font-size: 13px;
 }
 
-.submit-button{
+#submit-button{
     outline: none;
     background-color: black;
     border: none;
@@ -78,7 +78,7 @@ h1{
     align-items: center;
 }
 
-.submit-button:active{
+#submit-button:active{
     background-color: hsl(0, 0%, 17%);
     outline: none;
 }
