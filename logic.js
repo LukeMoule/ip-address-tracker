@@ -3,7 +3,7 @@ async function main() {
     const API_KEYS_LOCAL_PATH = "./config/api-keys.json"
 
     const IPIFY_API_KEY = await loadAPIKey("ipify");
-    const IPIFY_API_URL = "https://geo.ipify.org/api/v2/country,city?";
+    const IPIFY_API_URL = "https://geo.ipify.org/api/v2/country,city";
 
     async function loadAPIKey(str) {
         const res = await fetch(API_KEYS_LOCAL_PATH);
@@ -33,38 +33,35 @@ async function main() {
             return;
         }
 
+        const params = {
+            apiKey: IPIFY_API_KEY,
+            domain: input,
+        }
 
-        const url = generateIpifyURL(input);
+        const url = urlWithParams(IPIFY_API_URL, params)
         previousInput = input;
 
         console.log(url);
-        callIpifyAPI(url);
+        //queryInput(url);
 
 
     }
 
-
-    function generateIpifyURL(input){
-        return IPIFY_API_URL + new URLSearchParams({
-            apiKey: IPIFY_API_KEY,
-            domain: input,
-        });
+    function urlWithParams(url, params){
+        return url + '?' + new URLSearchParams(params);
     }
 
-    async function callIpifyAPI(url){
-        try{
-            const res = await fetch(url);
-            if(!res.ok){
-                console.log("hi")
-                throw new Error(res.statusText);
-            }
-            const resObj = await res.json();
-            console.log(resObj);
-            
-        } catch(error) {
-            //for any other fetch errors
-            console.log(error);
+    async function queryInput(url){
+        fetchData(url);
+    }
+
+    async function fetchData(url){
+        const res = await fetch(url);
+        if(!res.ok){
+            throw new Error(`${res.status} ${res.statusText}`);
         }
+        const resObj = await res.json();
+        console.log(resObj);
     }
 
 
