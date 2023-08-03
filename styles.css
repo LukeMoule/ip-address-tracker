@@ -1,3 +1,128 @@
 
+html {
+    box-sizing: border-box;
+
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+* {
+    -webkit-tap-highlight-color: transparent;
+}
+
+body{
+    overscroll-behavior: none;
+    padding: 1.6rem 0 0 0;
+    margin: 0;
+    font-family: 'Rubik', sans-serif;
+    font-weight: 500;
+    color: hsl(0, 0%, 17%);
+    background-color: lightblue;
+    background-image: url('images/pattern-bg-mobile.png');
+    background-repeat: no-repeat;
+    background-position: top center;
+}
+
+.ip-tracker{
+    margin: 0 auto;
+    max-width: 330px;
+    text-align: center;
+}
+
+h1{
+    font-size: 25px;
+    padding: 0;
+    margin: 0 0 2rem 0;
+    font-weight: 500;
+    color: white;
+}
+
+.search-bar{
+    margin-bottom: 1.2rem;
+    text-align: start;
+    display: flex;
+    height: 60px;
+}
+
+.input-field{
+    outline: none;
+    padding: 0 0 0 1rem;
+    font-family: inherit;
+    font-weight: 400;
+    font-size: 18px;
+    border: none;
+    background-color: white;
+    width: 100%;
+    border-radius: 15px 0 0 15px;
+}
+
+.input-field::placeholder{
+    font-size: 13px;
+}
+
+.submit-button{
+    outline: none;
+    background-color: black;
+    border: none;
+    padding: 0;
+    margin: 0;
+    aspect-ratio: 1;
+    border-radius: 0 15px 15px 0;
+    cursor: pointer;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.submit-button:active{
+    background-color: hsl(0, 0%, 17%);
+    outline: none;
+}
+
+
+
+dl{
+    padding: 0;
+    margin: 0;
+}
+
+dt{
+    padding: 0;
+    margin: 0 0 0.5rem 0;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: hsl(0, 0%, 59%);
+}
+
+dd{
+    padding: 0;
+    margin: 0 0 1rem 0;
+    font-size: 20px;
+}
+
+dd:last-of-type{
+    margin: 0;
+}
+
+.result-card{
+    background-color: white;
+    border-radius: 15px;
+    padding: 1.4rem;
+}
+
+
+
 .attribution {display:none; font-size: 11px; text-align: center; }
 .attribution a { color: hsl(228, 45%, 44%); }
+
+@media(min-width: 376px){
+    body{
+        background-image: url('images/pattern-bg-desktop.png');
+    }
+}
