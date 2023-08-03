@@ -12,20 +12,11 @@ async function main() {
     }
 
     //handle enter
-    //want to prevent user from holding down enter to spam requests 
-    let down = false;
-    document.addEventListener('keydown', function (event) {
-        if (down) return;
-        down = true;
-
+    document.addEventListener('keydown', (event)=>{
         if (event.key === 'Enter'){
             commit();
         }
-    }, false);
-
-    document.addEventListener('keyup', function () {
-        down = false;
-    }, false);
+    });
 
     //handle submit button click
     document.querySelector("#submit-button").addEventListener("click", commit)
@@ -34,14 +25,22 @@ async function main() {
 
     function commit(){
         const input = document.querySelector("#input-field").value;
+
+        /* Don't send request if no input or blank input.
+        Could also try to check whether it is a valid ip address or domain,
+        but we'll let the api handle that (errors won't use up request). */
         if(input === "" || input === previousInput){
             return;
         }
-        const url = generateIpifyURL(input);
-        console.log(url);
-        //callIpifyAPI(url);
 
+
+        const url = generateIpifyURL(input);
         previousInput = input;
+
+        console.log(url);
+        callIpifyAPI(url);
+
+
     }
 
 
@@ -55,9 +54,15 @@ async function main() {
     async function callIpifyAPI(url){
         try{
             const res = await fetch(url);
+            if(!res.ok){
+                console.log("hi")
+                throw new Error(res.statusText);
+            }
             const resObj = await res.json();
             console.log(resObj);
+            
         } catch(error) {
+            //for any other fetch errors
             console.log(error);
         }
     }
