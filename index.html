@@ -9,26 +9,35 @@
   <title>Frontend Mentor | IP Address Tracker</title>
 
   <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution { font-size: 11px; text-align: center; }
-    .attribution a { color: hsl(228, 45%, 44%); }
-  </style>
+  
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 
-  IP Address Tracker
+  <h1>IP Address Tracker</h1>
 
-  Search for any IP address or domain
-
-  IP Address
-  Location
-  Timezone
-    UTC <!-- add offset value dynamically using the API -->
-  ISP
+  <div class="search-bar">
+    <input type="text" placeholder="Search for any IP address or domain"></input>
+  </div>
+  
+<div class="card">
+  
+  <dl>
+    <dt>IP Address</dt>
+    <dd>192.168.l.254</dd>
+    <dt>Location</dt>
+    <dd>Home</dd>
+    <dt>Timezone</dt>
+    <dd>UTC <!-- add offset value dynamically using the API --></dd>
+    <dt>ISP</dt>
+    <dd>SpaceX Starlink</dd>
+  </dl>
+</div>
   
   <div class="attribution">
     Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
-    Coded by <a href="#">Your Name Here</a>.
+    Coded by <a href="#">Luke Moule</a>.
   </div>
 </body>
+<script src="logic.js"></script>
 </html>
