@@ -1,5 +1,6 @@
 //TODO: sort out function structure; 
 //TODO: color variables
+//TODO: doesn't work with ipv6
 
 const SET_VIEW_ZOOM = 13;
 
@@ -37,17 +38,10 @@ async function main() {
     async function commit(){
         resetErrorDisplay();
         startLoading();
+
         const input = document.querySelector("#input-field").value;
 
-        /* Don't send request if blank input.
-        TODO: blank imput send user's ip
-        TODO: if input same as previous just use known coords
-        Store all previous inputs
-        Could also try to check whether it is a valid ip address or domain,
-        but we'll let the api handle that (errors won't use up request). */
-        // if(input === ""){
-        //     return;
-        // }
+        //blank input defaults to client request's public IP address
 
         if(previousInputs.hasOwnProperty(input)){
             display(previousInputs[input]);
@@ -157,7 +151,8 @@ async function main() {
     }
 
 
-    //run once with blank input to display user's ip
+    //run once on refresh with blank input to display user's ip
+    //Disabled because this is a waste of API requests
     //commit();
 }
 
