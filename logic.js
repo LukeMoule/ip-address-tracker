@@ -26,6 +26,7 @@ async function main() {
     let previousInputs = {};
 
     async function commit(){
+        resetErrorDisplay();
         const input = document.querySelector("#input-field").value;
 
         /* Don't send request if blank input.
@@ -50,7 +51,7 @@ async function main() {
 
             //console.log(url);
             const locationObj = await fetchIpify(url);
-            console.log(locationObj);
+            //console.log(locationObj);
 
             //can key value be any string? could be any nonsense input from user
             previousInputs[input] = locationObj;
@@ -84,6 +85,26 @@ async function main() {
             map.setView([lat, long], SET_VIEW_ZOOM);
             L.marker([lat, long], {icon: customIcon}).addTo(map);
         }
+    }
+
+    function displayError(str){
+        const inputField = document.querySelector("#input-field");
+        inputField.style.setProperty('--placeholder-text-color', 'hsl(0, 100%, 50%)');
+        let message;
+        if(parseInt(str) === 422){
+            message = 'Invalid IP address or domain';
+        } else {
+            message = str;
+        }
+        inputField.setAttribute('placeholder', message);
+        inputField.value = "";
+    }
+
+    function resetErrorDisplay(){
+        const inputField = document.querySelector("#input-field");
+        inputField.style.setProperty('--placeholder-text-color', 'hsl(0, 0%, 59%)');
+        inputField.setAttribute('placeholder', 'Search for any IP address or domain');
+        
     }
 
     function URLPlusParams(url, params){
