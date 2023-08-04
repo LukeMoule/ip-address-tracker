@@ -155,21 +155,27 @@ result-wrapper:last-of-type > dd{
     }
 
     .result-wrapper{
+        padding-left: 1.2rem;
         text-align: start;
         flex-basis: 400px;
         position: relative;
     }
     
+    /*currently height is not set so it's just a normal border,
+    can set height to be more or less - not sure how to make this dynamic though*/
     .result-wrapper:after{
         position:absolute;
-        right: 1.2rem;
+        left:0;
         top: 0;
         bottom: 0;
         margin: auto 0;
         display:block;
-
         content: '';
         border-right: solid 1px hsl(0, 0%, 79%);
+    }
+
+    .result-wrapper:first-of-type:after{
+        border-right: none;
     }
 
     dt{
@@ -182,7 +188,4 @@ result-wrapper:last-of-type > dd{
         margin: 0;
     }
 
-    .result-wrapper:last-of-type:after{
-        border-right: none;
-    }
 }
