@@ -9,6 +9,10 @@ html {
     box-sizing: inherit;
 }
 
+body.waiting *{
+    cursor: wait !important;
+}
+
 body{
     max-width: 1440px;
     /*disable mobile overscroll 'bounce' effect*/

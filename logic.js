@@ -25,8 +25,10 @@ async function main() {
 
     let previousInputs = {};
 
+
     async function commit(){
         resetErrorDisplay();
+        startLoading();
         const input = document.querySelector("#input-field").value;
 
         /* Don't send request if blank input.
@@ -58,7 +60,7 @@ async function main() {
             display(locationObj);
         }
         //console.log(previousInputs);
-
+        finishLoading();
     }
 
     function display(obj){
@@ -136,7 +138,13 @@ async function main() {
     }
 
 
+    function startLoading(){
+        document.querySelector("body").classList.add("waiting");
+    }
 
+    function finishLoading(){
+        document.querySelector("body").classList.remove("waiting");
+    }
 
 
     //run once with blank input to display user's ip
