@@ -26,7 +26,9 @@ async function main() {
     function commit(){
         const input = document.querySelector("#input-field").value;
 
-        /* Don't send request if no input or blank input.
+        /* Don't send request if blank input.
+        TODO: if input same as previous just use known coords
+        Store all previous inputs
         Could also try to check whether it is a valid ip address or domain,
         but we'll let the api handle that (errors won't use up request). */
         if(input === "" || input === previousInput){
@@ -43,6 +45,7 @@ async function main() {
 
         console.log(url);
         //queryInput(url);
+        map.setView([37.38605, -122.08385], 13)
 
 
     }
@@ -75,8 +78,9 @@ async function main() {
 
 main();
 
-var map = L.map('map').setView([51.505, -0.09], 13);
+var map = L.map('map',{zoomControl: false}).setView([51.505, -0.09], 13);
 L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
     maxZoom: 19,
     attribution: '© OpenStreetMap'
 }).addTo(map);
+
