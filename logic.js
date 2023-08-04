@@ -1,3 +1,6 @@
+//TODO: sort out function structure; 
+//TODO: color variables
+
 const SET_VIEW_ZOOM = 13;
 
 
@@ -8,9 +11,14 @@ async function main() {
     const IPIFY_API_URL = "https://geo.ipify.org/api/v2/country,city";
 
     async function loadAPIKey(str) {
-        const res = await fetch(API_KEYS_LOCAL_PATH);
-        const resObj = await res.json();
-        return resObj[str];
+        try {
+            const res = await fetch(API_KEYS_LOCAL_PATH);
+            const resObj = await res.json();
+            return resObj[str];
+        } catch (error) {
+            let key = prompt("No API key found. Please input ipify API key:");
+        }
+        
     }
 
     //handle enter
@@ -95,6 +103,8 @@ async function main() {
         let message;
         if(parseInt(str) === 422){
             message = 'Invalid IP address or domain';
+        } else if(parseInt(str) === 403){
+            message = 'Invalid API key';
         } else {
             message = str;
         }
