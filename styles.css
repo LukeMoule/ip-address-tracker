@@ -100,7 +100,7 @@ dd{
     font-size: 20px;
 }
 
-dd:last-of-type{
+result-wrapper:last-of-type > dd{
     margin: 0;
 }
 
@@ -118,5 +118,62 @@ dd:last-of-type{
 @media(min-width: 376px){
     body{
         background-image: url('images/pattern-bg-desktop.png');
+    }
+}
+
+@media(min-width: 880px){
+    h1{
+        font-size:30px;
+    }
+
+    #input-field::placeholder{
+        font-size: 18px;
+    }
+
+    .ip-tracker{
+        max-width: 1000px;
+        padding: 20px;
+    }
+    
+    .search-bar{
+        margin: 0 auto 2.5rem auto;
+        max-width: 600px;
+    }
+
+    .result-card dl{
+        padding: 1rem;
+        display:flex
+    }
+
+    .result-wrapper{
+        text-align: start;
+        flex-basis: 400px;
+        position: relative;
+    }
+    
+    .result-wrapper:after{
+        position:absolute;
+        right: 1.2rem;
+        top: 0;
+        bottom: 0;
+        margin: auto 0;
+        display:block;
+
+        content: '';
+        border-right: solid 1px hsl(0, 0%, 79%);
+    }
+
+    dt{
+        font-size: 12px;
+    }
+
+    dd{
+        font-size: 24px;
+        max-width: 170px;
+        margin: 0;
+    }
+
+    .result-wrapper:last-of-type:after{
+        border-right: none;
     }
 }
